@@ -10,7 +10,7 @@ public class UserInsertForm {
 	private String userName;
 
 	@NotBlank
-	private String user_pass;
+	private String password;
 
 	@NotBlank
 	private String nickname;
@@ -35,12 +35,12 @@ public class UserInsertForm {
 		this.userName = userName;
 	}
 
-	public String getUser_pass() {
-		return user_pass;
+	public String getpassword() {
+		return password;
 	}
 
-	public void setUser_pass(String user_pass) {
-		this.user_pass = user_pass;
+	public void setUser_pass(String password) {
+		this.password = password;
 	}
 
 	public String getNickname() {
@@ -68,7 +68,7 @@ public class UserInsertForm {
 	}
 	public boolean isEmpty() {
 		return (userName == null || userName.isEmpty())
-				&& (user_pass == null || user_pass.isEmpty())
+				&& (password == null || password.isEmpty())
 				&& (nickname == null || nickname.isEmpty());
 	}
 }

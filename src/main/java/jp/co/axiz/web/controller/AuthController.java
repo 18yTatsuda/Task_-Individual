@@ -36,7 +36,7 @@ public class AuthController {
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String login(@Validated @ModelAttribute("loginForm") LoginForm form, BindingResult bindingResult,
+	public String menu(@Validated @ModelAttribute("loginForm") LoginForm form, BindingResult bindingResult,
 			Model model) {
 
 		String errorMsg = message.getMessage("login.error", null, Locale.getDefault());
@@ -46,7 +46,7 @@ public class AuthController {
 			return "login";
 		}
 
-		User user = userService.authentication(form.getUserName(), form.getPass());
+		User user = userService.authentication(form.getUserName(), form.getPassword());
 
 		if (user == null) {
 			model.addAttribute("errmsg", errorMsg);
@@ -56,6 +56,11 @@ public class AuthController {
 			model.addAttribute("user", sessionInfo.getLoginUser());
 			return "menu";
 		}
+	}
+
+	@RequestMapping("/regist")
+	public String regist(Model model) {
+		return "regist";
 	}
 
 	@RequestMapping(value = "/regist", method = RequestMethod.POST)
@@ -73,6 +78,12 @@ public class AuthController {
 		model.addAttribute("user",sessionInfo.getLoginUser());
 
 		return "login";
+	}
+
+	@RequestMapping("/profile")
+	public String profile(Model model) {
+		model.addAttribute("user",sessionInfo.getLoginUser());
+		return "profile";
 	}
 
 	@RequestMapping(value = "/logout", method = RequestMethod.POST)

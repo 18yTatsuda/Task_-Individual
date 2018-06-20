@@ -44,6 +44,12 @@ public class SessionInfo implements Serializable {
 		afterImage = _afterImage;
 	}
 
+	public User getNewUser() {
+		return newUser;
+	}
+	public void setNewUser(User newUser) {
+		this.newUser = newUser;
+	}
 
 	public void invalidate() {
 		loginUser = null;
@@ -52,11 +58,4 @@ public class SessionInfo implements Serializable {
 		prevImage = null;
 		afterImage = null;
 	}
-	public User getNewUser() {
-		return newUser;
-	}
-	public void setNewUser(User newUser) {
-		this.newUser = newUser;
-	}
-
 }

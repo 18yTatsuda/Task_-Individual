@@ -14,18 +14,15 @@ public class LoginForm {
 		return userName;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUserName(String _userName) {
+		this.userName = _userName;
 	}
 
-	public String getPass() {
+	public String getPassword() {
 		return password;
 	}
 
-	public void setPass(String password) {
-		this.password = password;
+	public void setPassword(String _password) {
+		this.password = _password;
 	}
-
-
-
 }
