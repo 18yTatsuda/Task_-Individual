@@ -29,6 +29,11 @@ public class UpdateController {
 	@Autowired
 	private ImageInfoService imageInfoService;
 
+	@RequestMapping("/update")
+	public String update(Model model) {
+		return "update";
+	}
+
 	@RequestMapping(value="/update" , method = RequestMethod.POST)
 	public String updateExecute(@Validated @ModelAttribute("updateForm") UpdateForm form, BindingResult bindingResult,
 			Model model) {

@@ -26,7 +26,7 @@ public class SelectController {
 	private IImageInfoService ImageInfoService;
 
 	@RequestMapping("/select")
-	public String login(@ModelAttribute("selectForm") SelectForm form, Model model) {
+	public String select(Model model) {
 		return "select";
 	}
 

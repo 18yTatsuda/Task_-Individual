@@ -5,5 +5,6 @@ import jp.co.axiz.web.entity.User;
 public interface IUserDao {
 
 	public User findByNameAndPass(String name,String pass);
+	public int register(User user);
 
 }

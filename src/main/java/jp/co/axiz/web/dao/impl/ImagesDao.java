@@ -21,7 +21,7 @@ public class ImagesDao implements IImagesDao {
 
 	@Override
 	public List<ImageInfo> findByTags(Integer tag) {
-		String sql = "SELECT * FROM users WHERE tag_id = :tagId";
+		String sql = "SELECT * FROM images WHERE tag_id = :tagId";
 		MapSqlParameterSource param = new MapSqlParameterSource();
 		param.addValue("tag", tag);
 

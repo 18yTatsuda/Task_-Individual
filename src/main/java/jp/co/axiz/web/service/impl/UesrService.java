@@ -20,4 +20,9 @@ public class UesrService implements IUserService{
 		return userDao.findByNameAndPass(name, pass);
 	}
 
+	@Override
+	public int insert(User user) {
+		return userDao.register(user);
+	}
+
 }

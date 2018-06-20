@@ -8,6 +8,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import jp.co.axiz.web.entity.ImageInfo;
 import jp.co.axiz.web.entity.SessionInfo;
@@ -32,8 +34,11 @@ public class InsertController {
 	}
 
 	@RequestMapping(value = "insert" ,method = RequestMethod.POST)
-	public String insertExecute(@ModelAttribute("insertForm") InsertForm form, BindingResult bindingResult,
-			Model model) {
+	public String insertExecute(@ModelAttribute("insertForm") @RequestParam("image")
+			MultipartFile file,InsertForm form, BindingResult bindingResult,Model model) {
+		if (file.getSize() > 0) {
+			System.out.println(file.getOriginalFilename());
+		}
 
 		ImageInfo image = sessionInfo.getNewImage();
 

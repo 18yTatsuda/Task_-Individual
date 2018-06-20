@@ -12,6 +12,7 @@ public class SessionInfo implements Serializable {
 	private static final long serialVersionUID = 6334063099671792256L;
 
 	private User loginUser;
+	private User newUser;
 	private ImageInfo newImage;
 	private ImageInfo prevImage;
 	private ImageInfo afterImage;
@@ -46,8 +47,16 @@ public class SessionInfo implements Serializable {
 
 	public void invalidate() {
 		loginUser = null;
+		newUser = null;
 		newImage = null;
 		prevImage = null;
 		afterImage = null;
 	}
+	public User getNewUser() {
+		return newUser;
+	}
+	public void setNewUser(User newUser) {
+		this.newUser = newUser;
+	}
+
 }

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import jp.co.axiz.web.entity.SessionInfo;
 import jp.co.axiz.web.entity.User;
 import jp.co.axiz.web.form.LoginForm;
+import jp.co.axiz.web.form.UserInsertForm;
 import jp.co.axiz.web.service.impl.UesrService;
 
 @Controller
@@ -55,6 +56,23 @@ public class AuthController {
 			model.addAttribute("user", sessionInfo.getLoginUser());
 			return "menu";
 		}
+	}
+
+	@RequestMapping(value = "/regist", method = RequestMethod.POST)
+	public String regist(@Validated @ModelAttribute("userInsertForm") UserInsertForm form, BindingResult bindingResult,
+			Model model) {
+
+		User user = sessionInfo.getNewUser();
+
+		int id = userService.insert(user);
+
+		sessionInfo.setNewImage(null);
+
+		form.setUserId(id);
+
+		model.addAttribute("user",sessionInfo.getLoginUser());
+
+		return "login";
 	}
 
 	@RequestMapping(value = "/logout", method = RequestMethod.POST)

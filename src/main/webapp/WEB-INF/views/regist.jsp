@@ -14,13 +14,13 @@
 <form:form action="regist" method="post" modelAttribute="userInsertForm">
 <fieldset>
 	<div>
-		<label>ユーザー名</label><form:input path="user_name" />
+		<label>※ユーザー名</label><form:input path="user_name" />
 	</div>
 	<div>
-		<label>パスワード</label><form:password path="user_pass" showPassword="true"/>
+		<label>※パスワード</label><form:password path="user_pass" showPassword="true"/>
 	</div>
 	<div>
-		<label>ニックネーム</label><form:input path="nickname" />
+		<label>※ニックネーム</label><form:input path="nickname" />
 	</div>
 	<div>
 		<label>E-mail</label><form:input path="email" />
