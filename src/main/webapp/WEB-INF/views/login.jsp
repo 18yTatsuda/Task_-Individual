@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,10 +8,20 @@
 <title>ログイン画面</title>
 </head>
 <body>
-<form action="menu" method="post">
-<input type="text" name="id">
-<input type="password" name="pass">
-<button type="submit">ログイン</button>
-</form>
+<form:form action="login" method="post" modelAttribute="loginForm">
+  <fieldset>
+    <div>
+      <label>ユーザー名：</label><form:input path="userName" />
+    </div>
+    <div>
+      <label>PASS：</label><form:password path="password" />
+    </div>
+  </fieldset>
+<%--   <form:button>ログイン</form:button> --%>
+  <input type="submit" value="ログイン">
+</form:form>
+<div>
+  <a href="index">TOP画面に戻る</a>
+</div>
 </body>
 </html>

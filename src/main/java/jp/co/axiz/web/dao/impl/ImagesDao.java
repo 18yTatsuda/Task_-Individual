@@ -29,6 +29,16 @@ public class ImagesDao implements IImagesDao {
 		return resultList;
 	}
 
+	public ImageInfo findById(Integer id) {
+		String sql = "SELECT * FROM images WHERE image_id = :imageId";
+		MapSqlParameterSource param = new MapSqlParameterSource();
+		param.addValue("imageId", id);
+
+		List<ImageInfo> resultList = nPjT.query(sql, param, new BeanPropertyRowMapper<ImageInfo>(ImageInfo.class));
+
+		return resultList.isEmpty() ? null : resultList.get(0);
+	}
+
 	@Override
 	public int register(ImageInfo image) {
 		String sql = "INSERT INTO images (image_name,file_name ,tag_id) VALUES (:imageName, :fileName, :tagId)";

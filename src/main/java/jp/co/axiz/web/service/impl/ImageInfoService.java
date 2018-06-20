@@ -22,6 +22,10 @@ public class ImageInfoService implements IImageInfoService {
 		return imageInfoDao.findByTags(imageInfo.getTag_id());
 	}
 
+	public ImageInfo findById(Integer id) {
+		return imageInfoDao.findById(id);
+	}
+
 	@Override
 	public int insert(ImageInfo imageInfo) {
 		return imageInfoDao.register(imageInfo);

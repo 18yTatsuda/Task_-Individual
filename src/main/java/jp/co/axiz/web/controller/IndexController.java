@@ -18,6 +18,11 @@ public class IndexController {
 		return "index";
 	}
 
+	@RequestMapping("/regist")
+	public String regist(Model model) {
+		return "regist";
+	}
+
 	@RequestMapping("/menu")
 		public String menu(Model model) {
 			model.addAttribute("user", sessionInfo.getLoginUser());

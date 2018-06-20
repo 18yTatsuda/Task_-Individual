@@ -12,8 +12,9 @@ public class SessionInfo implements Serializable {
 	private static final long serialVersionUID = 6334063099671792256L;
 
 	private User loginUser;
-	private User newUser;
-	private User prevUser;
+	private ImageInfo newImage;
+	private ImageInfo prevImage;
+	private ImageInfo afterImage;
 
 	public User getLoginUser() {
 		return loginUser;
@@ -21,22 +22,32 @@ public class SessionInfo implements Serializable {
 	public void setLoginUser(User loginUser) {
 		this.loginUser = loginUser;
 	}
-	public User getNewUser() {
-		return newUser;
+	public ImageInfo getNewImage() {
+		return newImage;
 	}
-	public void setNewUser(User newUser) {
-		this.newUser = newUser;
+	public void setNewImage(ImageInfo newImage) {
+		this.newImage = newImage;
 	}
-	public User getPrevUser() {
-		return prevUser;
+	public ImageInfo getPrevImage() {
+		return prevImage;
 	}
-	public void setPrevUser(User prevUser) {
-		this.prevUser = prevUser;
+	public void setPrevImage(ImageInfo prevImage) {
+		this.prevImage = prevImage;
 	}
+
+	public ImageInfo getAfterImage() {
+		return afterImage;
+	}
+
+	public void setAfterImage(ImageInfo _afterImage) {
+		afterImage = _afterImage;
+	}
+
 
 	public void invalidate() {
 		loginUser = null;
-		newUser = null;
-		prevUser = null;
+		newImage = null;
+		prevImage = null;
+		afterImage = null;
 	}
 }

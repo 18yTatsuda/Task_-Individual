@@ -29,6 +29,11 @@ public class AuthController {
 	@Autowired
 	private UesrService userService;
 
+	@RequestMapping("/login")
+	public String login(@ModelAttribute("loginForm") LoginForm form, Model model) {
+		return "login";
+	}
+
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(@Validated @ModelAttribute("loginForm") LoginForm form, BindingResult bindingResult,
 			Model model) {
@@ -40,7 +45,7 @@ public class AuthController {
 			return "login";
 		}
 
-		User user = userService.authentication(form.getLoginName(), form.getPass());
+		User user = userService.authentication(form.getUserName(), form.getPass());
 
 		if (user == null) {
 			model.addAttribute("errmsg", errorMsg);
