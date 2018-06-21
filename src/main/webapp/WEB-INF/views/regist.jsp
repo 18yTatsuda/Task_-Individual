@@ -11,6 +11,16 @@
 <title>新規登録</title>
 </head>
 <body>
+<p>登録情報を入力してください<br>
+※は必須です</p>
+
+<c:if test="${not empty errmsg}">
+  <p class="error">${fn:escapeXml(errmsg)}</p>
+</c:if>
+<c:if test="${not empty msg}">
+  <p class="ok">${fn:escapeXml(msg)}</p>
+</c:if>
+
 <form:form action="regist" method="post" modelAttribute="userInsertForm">
 <fieldset>
 	<div>
@@ -19,6 +29,9 @@
 	<div>
 		<label>※パスワード</label><form:password path="user_pass" showPassword="true"/>
 	</div>
+	<div>
+      <label>※パスワード（再入力）</label><form:password path="confirmPassword" />
+    </div>
 	<div>
 		<label>※ニックネーム</label><form:input path="nickname" />
 	</div>
@@ -31,5 +44,8 @@
 </fieldset>
 <input type="submit" value="登録">
 </form:form>
+<div>
+  <a href="index">トップ画面に戻る</a>
+</div>
 </body>
 </html>

@@ -59,7 +59,7 @@ public class AuthController {
 	}
 
 	@RequestMapping("/regist")
-	public String regist(Model model) {
+	public String regist(@ModelAttribute("userInsertForm") UserInsertForm form, Model model) {
 		return "regist";
 	}
 
@@ -67,17 +67,42 @@ public class AuthController {
 	public String regist(@Validated @ModelAttribute("userInsertForm") UserInsertForm form, BindingResult bindingResult,
 			Model model) {
 
-		User user = sessionInfo.getNewUser();
+		if (bindingResult.hasErrors()) {
+			String errorMsg = message.getMessage("required.error", null, Locale.getDefault());
+			model.addAttribute("errmsg", errorMsg);
+			return "regist";
+		}
+
+		User user = new User();
+		user.setUser_name(form.getUser_name());
+		user.setPassword(form.getUser_pass());
+		user.setNickName(form.getNickname());
+		user.setEmail(form.getEmail());
+		user.setMemo(form.getMemo());
+
+		sessionInfo.setNewUser(user);
+
+		if(!user.getPassword().equals(form.getConfirmPassword())) {
+			String errorMsg = message.getMessage("password.not.match.error", null, Locale.getDefault());
+			model.addAttribute("errmsg", errorMsg);
+
+			form.setConfirmPassword("");
+
+			return "regist";
+		}
 
 		int id = userService.insert(user);
 
-		sessionInfo.setNewImage(null);
+		sessionInfo.setNewUser(null);
 
 		form.setUserId(id);
 
 		model.addAttribute("user",sessionInfo.getLoginUser());
 
-		return "login";
+		String msg = message.getMessage("registration.ok", null, Locale.getDefault());
+		model.addAttribute("msg", msg);
+
+		return "regist";
 	}
 
 	@RequestMapping("/profile")

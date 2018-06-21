@@ -9,7 +9,7 @@
 </head>
 <body>
 <p>${fn:escapeXml(user.nickName)}さんのユーザー情報です。</p>
-<p>ユーザー名:${fn:escapeXml(user.userName)}</p>
+<p>ユーザー名:${fn:escapeXml(user.user_name)}</p>
 <p>ニックネーム:${fn:escapeXml(user.nickName)}</p>
 <p>E-mail:${fn:escapeXml(user.email)}</p>
 <p>メモ:${fn:escapeXml(user.memo)}</p>

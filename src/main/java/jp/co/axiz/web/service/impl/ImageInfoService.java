@@ -18,13 +18,20 @@ public class ImageInfoService implements IImageInfoService {
 	private ImagesDao imageInfoDao;
 
 	@Override
-	public List<ImageInfo> faindTag(ImageInfo imageInfo) {
-		return imageInfoDao.findByTags(imageInfo.getTag_id());
+	public List<ImageInfo> faindTag(Integer tag) {
+		return imageInfoDao.findByTags(tag);
 	}
 
+	@Override
 	public ImageInfo findById(Integer id) {
 		return imageInfoDao.findById(id);
 	}
+
+	@Override
+	public ImageInfo selectImage(Integer tag) {
+		return imageInfoDao.selectImage(tag);
+	}
+
 
 	@Override
 	public int insert(ImageInfo imageInfo) {

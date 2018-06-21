@@ -7,10 +7,13 @@ public class UserInsertForm {
 	private Integer userId;
 
 	@NotBlank
-	private String userName;
+	private String user_name;
 
 	@NotBlank
-	private String password;
+	private String user_pass;
+
+	@NotBlank
+	private String confirmPassword;
 
 	@NotBlank
 	private String nickname;
@@ -18,6 +21,7 @@ public class UserInsertForm {
 	private String email;
 
 	private String memo;
+
 
 	public Integer getUserId() {
 		return userId;
@@ -27,20 +31,31 @@ public class UserInsertForm {
 		this.userId = userId;
 	}
 
-	public String getUserName() {
-		return userName;
+	public String getUser_name() {
+		return user_name;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUser_name(String user_name) {
+		this.user_name = user_name;
 	}
 
-	public String getpassword() {
-		return password;
+
+
+	public String getUser_pass() {
+		return user_pass;
 	}
 
-	public void setUser_pass(String password) {
-		this.password = password;
+	public void setUser_pass(String user_pass) {
+		this.user_pass = user_pass;
+	}
+
+
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
 	}
 
 	public String getNickname() {
@@ -51,6 +66,7 @@ public class UserInsertForm {
 		this.nickname = nickname;
 	}
 
+
 	public String getEmail() {
 		return email;
 	}
@@ -59,6 +75,7 @@ public class UserInsertForm {
 		this.email = email;
 	}
 
+
 	public String getMemo() {
 		return memo;
 	}
@@ -66,9 +83,11 @@ public class UserInsertForm {
 	public void setMemo(String memo) {
 		this.memo = memo;
 	}
+
+
 	public boolean isEmpty() {
-		return (userName == null || userName.isEmpty())
-				&& (password == null || password.isEmpty())
+		return (user_name == null || user_name.isEmpty())
+				&& (user_pass == null || user_pass.isEmpty())
 				&& (nickname == null || nickname.isEmpty());
 	}
 }

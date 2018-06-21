@@ -11,27 +11,31 @@
 <title>検索結果</title>
 </head>
 <body>
-<table>
-  <caption>検索結果を表示します</caption>
-  <thead>
-    <tr>
-      <th>タイトル</th>
-      <th>画像</th>
-      <th>タグ</th>
-    </tr>
-  </thead>
-  <tbody>
-    <c:forEach items="${imagelist}" var="image">
-      <tr>
-        <td>${fn:escapeXml(image.imageName)}</td>
-        <td>${fn:escapeXml(image.image)}</td>
-        <td>${fn:escapeXml(image.tag)}</td>
-      </tr>
-    </c:forEach>
-  </tbody>
-</table>
-<div>
-<a href="menu">メニューに戻る</a>
-</div>
+	<table>
+		<caption>検索結果を表示します</caption>
+		<thead>
+			<tr>
+				<th>タイトル</th>
+				<th>画像</th>
+				<th>投稿者ID</th>
+				<th>詳細を見る</th>
+			</tr>
+		</thead>
+		<tbody>
+		<c:forEach items="${imagelist}" var="image">
+			<tr>
+				<td>${fn:escapeXml(image.imageName)}</td>
+				<td><img src="/images/${fn:escapeXml(image.file_name)}"></td>
+				<td>${fn:escapeXml(image.user_id)}</td>
+				<td><form:form action="more" method="get">
+					<input type="submit" value="詳細">
+				</form:form></td>
+			</tr>
+		</c:forEach>
+		</tbody>
+	</table>
+	<div>
+		<a href="menu">メニューに戻る</a>
+	</div>
 </body>
 </html>

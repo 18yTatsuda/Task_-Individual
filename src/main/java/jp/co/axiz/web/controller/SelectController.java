@@ -13,20 +13,24 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import jp.co.axiz.web.entity.ImageInfo;
+import jp.co.axiz.web.entity.SessionInfo;
 import jp.co.axiz.web.form.SelectForm;
-import jp.co.axiz.web.service.IImageInfoService;
+import jp.co.axiz.web.service.impl.ImageInfoService;
 
 @Controller
 public class SelectController {
 
 	@Autowired
+	private SessionInfo sessionInfo;
+
+	@Autowired
 	MessageSource message;
 
 	@Autowired
-	private IImageInfoService ImageInfoService;
+	private ImageInfoService ImageInfoService;
 
 	@RequestMapping("/select")
-	public String select(Model model) {
+	public String select(@ModelAttribute("selectForm") SelectForm form, Model model) {
 		return "select";
 	}
 
@@ -40,17 +44,25 @@ public class SelectController {
 			model.addAttribute("errmsg", errorMsg);
 			return "select";
 		}
-		ImageInfo condition = new ImageInfo();
-		condition.setTag_id(form.getTagId());
 
-		List<ImageInfo> resultList = ImageInfoService.faindTag(condition);
+		int tag =form.getTagId();
+
+		List<ImageInfo> resultList = ImageInfoService.faindTag(tag);
 
 		if(resultList.isEmpty()) {
 			model.addAttribute("errmsg", errorMsg);
 			return "select";
 		}else {
-			model.addAttribute("userlist", resultList);
+			model.addAttribute("imagelist", resultList);
 			return "selectResult";
 		}
+	}
+
+	@RequestMapping(value = "/more")
+	public String more(@ModelAttribute("selectForm") SelectForm form,Model model) {
+		ImageInfo image = sessionInfo.getPrevImage();
+		ImageInfo moreImage = ImageInfoService.selectImage(image.getTag_id());
+		model.addAttribute("image",moreImage);
+		return "details";
 	}
 }

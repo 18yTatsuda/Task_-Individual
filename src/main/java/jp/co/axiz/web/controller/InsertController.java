@@ -1,5 +1,7 @@
 package jp.co.axiz.web.controller;
 
+import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
@@ -13,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import jp.co.axiz.web.entity.ImageInfo;
 import jp.co.axiz.web.entity.SessionInfo;
+import jp.co.axiz.web.entity.User;
 import jp.co.axiz.web.form.InsertForm;
 import jp.co.axiz.web.service.impl.ImageInfoService;
 
@@ -35,12 +38,20 @@ public class InsertController {
 
 	@RequestMapping(value = "insert" ,method = RequestMethod.POST)
 	public String insertExecute(@ModelAttribute("insertForm") @RequestParam("image")
-			MultipartFile file,InsertForm form, BindingResult bindingResult,Model model) {
+			MultipartFile file,InsertForm form, BindingResult bindingResult,Model model) throws IOException {
+
 		if (file.getSize() > 0) {
 			System.out.println(file.getOriginalFilename());
 		}
 
 		ImageInfo image = sessionInfo.getNewImage();
+		User user = sessionInfo.getLoginUser();
+
+		image.setImageName(form.getImageName());
+		image.setFile_name(file.getOriginalFilename());
+		image.setTag_id(form.getTagId());
+		image.setUser_id(user.getUserId());
+		image.setImage_memo(form.getImageMemo());
 
 		int id = imageInfoService.insert(image);
 
@@ -48,7 +59,7 @@ public class InsertController {
 
 		form.setImageId(id);
 
-		model.addAttribute("image",sessionInfo.getLoginUser());
+		model.addAttribute("newImage",sessionInfo.getLoginUser());
 
 		return "insertResult";
 	}

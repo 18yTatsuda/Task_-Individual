@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -10,7 +11,7 @@
 <form action="updateInput" method="post">
   <fieldset>
     <div>
-      <label></label><input type="text" name="image_NewName" value="変更前のタイトル">
+      <label></label><input type="text" name="image_NewName" value="${fn:escapeXml(image.image_name)}">
     </div>
     <div>
       <label>画像は差し替え不可</label>
@@ -25,7 +26,7 @@
       <input type="checkbox" name="tags" value="6">動物
     </div>
     <div>
-      <label>メモ</label><input type="text" name="newMemo" value="変更前のメモ">
+      <label>メモ</label><input type="text" name="newMemo" value="${fn:escapeXml(image.image_memo)}">
     </div>
   </fieldset>
   <div>

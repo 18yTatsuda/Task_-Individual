@@ -21,12 +21,27 @@ public class ImagesDao implements IImagesDao {
 
 	@Override
 	public List<ImageInfo> findByTags(Integer tag) {
-		String sql = "SELECT * FROM images WHERE tag_id = :tagId";
+		String sql = "SELECT * FROM images WHERE tag_id = :tag";
 		MapSqlParameterSource param = new MapSqlParameterSource();
 		param.addValue("tag", tag);
 
 		List<ImageInfo> resultList = nPjT.query(sql, param,new BeanPropertyRowMapper<ImageInfo>(ImageInfo.class));
 		return resultList;
+	}
+
+	@Override
+	public ImageInfo selectImage(Integer tag){
+		String sql ="SELECT i.image_id,i.image_name,i.file_name,t.tag_name,u.nicknamei.image_memo"
+				+"FROM images i"
+				+"JOIN tags t ON i.tag_id=t.tag_id"
+				+"JOIN users u ON i.user_id=u.user_id;"
+				+"WHERE t.tag_id = :tag";
+
+
+		MapSqlParameterSource param = new MapSqlParameterSource();
+		param.addValue("image", tag);
+		List<ImageInfo> resultList = nPjT.query(sql, param, new BeanPropertyRowMapper<ImageInfo>(ImageInfo.class));
+		return resultList.isEmpty() ? null : resultList.get(0);
 	}
 
 	public ImageInfo findById(Integer id) {

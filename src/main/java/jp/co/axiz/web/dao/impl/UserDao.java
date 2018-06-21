@@ -33,9 +33,9 @@ public class UserDao implements IUserDao {
 
 	@Override
 	public int register(User user) {
-		String sql = "INSERT INTO users (user_name ,password ,nickname ,email ,memo) VALUES (:user_name,:password,:nickname,:email,:memo))";
+		String sql = "INSERT INTO users (user_name ,password ,nickname ,email ,memo) VALUES (:userName,:password,:nickname,:email,:memo)";
 		MapSqlParameterSource param = new MapSqlParameterSource();
-		param.addValue("userName", user.getUserName());
+		param.addValue("userName", user.getUser_name());
 		param.addValue("password", user.getPassword());
 		param.addValue("nickname", user.getNickName());
 		param.addValue("email", user.getEmail());

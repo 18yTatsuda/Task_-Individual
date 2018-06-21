@@ -15,6 +15,9 @@ public class InsertForm {
 	@NotBlank
 	private Integer tagId;
 
+	private String imageMemo;
+
+
 	public Integer getImageId() {
 		return imageId;
 	}
@@ -45,6 +48,14 @@ public class InsertForm {
 
 	public void setTagId(Integer tagId) {
 		this.tagId = tagId;
+	}
+
+	public String getImageMemo() {
+		return imageMemo;
+	}
+
+	public void setImageMemo(String imageMemo) {
+		this.imageMemo = imageMemo;
 	}
 
 	public boolean isEmpty() {

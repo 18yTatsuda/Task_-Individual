@@ -9,7 +9,7 @@ public class ImageInfo implements Serializable {
 	private String file_name;
 	private Integer tag_id;
 	private String image_memo;
-	private String user_id;
+	private Integer user_id;
 	private String privateFrag;
 
 
@@ -49,10 +49,10 @@ public class ImageInfo implements Serializable {
 	public void setImage_memo(String image_memo) {
 		this.image_memo = image_memo;
 	}
-	public String getUser_id() {
+	public Integer getUser_id() {
 		return user_id;
 	}
-	public void setUser_id(String user_id) {
+	public void setUser_id(Integer user_id) {
 		this.user_id = user_id;
 	}
 	public String getPrivateFrag() {
