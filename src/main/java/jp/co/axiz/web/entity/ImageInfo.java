@@ -3,7 +3,7 @@ package jp.co.axiz.web.entity;
 import java.io.Serializable;
 
 public class ImageInfo implements Serializable {
-	private Integer iamgeId;
+	private Integer imageId;
 	private String imageName;
 	private String path_name;
 	private String file_name;
@@ -13,11 +13,11 @@ public class ImageInfo implements Serializable {
 	private String privateFrag;
 
 
-	public Integer getIamgeId() {
-		return iamgeId;
+	public Integer getImageId() {
+		return imageId;
 	}
-	public void setIamgeId(Integer iamgeId) {
-		this.iamgeId = iamgeId;
+	public void setImageId(Integer imageId) {
+		this.imageId = imageId;
 	}
 	public String getImageName() {
 		return imageName;

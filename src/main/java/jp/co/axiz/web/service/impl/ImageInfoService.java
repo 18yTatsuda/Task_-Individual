@@ -28,8 +28,8 @@ public class ImageInfoService implements IImageInfoService {
 	}
 
 	@Override
-	public ImageInfo selectImage(Integer tag) {
-		return imageInfoDao.selectImage(tag);
+	public List<ImageInfo> selectImage(Integer imageId) {
+		return imageInfoDao.selectImage(imageId);
 	}
 
 

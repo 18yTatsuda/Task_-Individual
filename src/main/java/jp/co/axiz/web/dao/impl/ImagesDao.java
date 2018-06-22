@@ -30,18 +30,16 @@ public class ImagesDao implements IImagesDao {
 	}
 
 	@Override
-	public ImageInfo selectImage(Integer tag){
-		String sql ="SELECT i.image_id,i.image_name,i.file_name,t.tag_name,u.nicknamei.image_memo"
-				+"FROM images i"
-				+"JOIN tags t ON i.tag_id=t.tag_id"
-				+"JOIN users u ON i.user_id=u.user_id;"
-				+"WHERE t.tag_id = :tag";
+	public List<ImageInfo> selectImage(Integer imageId){
+		String sql ="SELECT i.image_id,i.image_name,i.file_name,t.tag_name,u.nickname,i.image_memo"
+				+"FROM images i JOIN tags t ON i.tag_id=t.tag_id JOIN users u ON i.user_id=u.user_id"
+				+"WHERE i.image_id = :imageId";
 
 
 		MapSqlParameterSource param = new MapSqlParameterSource();
-		param.addValue("image", tag);
+		param.addValue("imageId", imageId);
 		List<ImageInfo> resultList = nPjT.query(sql, param, new BeanPropertyRowMapper<ImageInfo>(ImageInfo.class));
-		return resultList.isEmpty() ? null : resultList.get(0);
+		return resultList;
 	}
 
 	public ImageInfo findById(Integer id) {
@@ -75,7 +73,7 @@ public class ImagesDao implements IImagesDao {
 		param.addValue("imageName", image.getImageName());
 		param.addValue("tagId", image.getTag_id());
 		param.addValue("imageMemo", image.getImage_memo());
-		param.addValue("imageId", image.getIamgeId());
+		param.addValue("imageId", image.getImageId());
 
 		nPjT.update(sql, param);
 	}

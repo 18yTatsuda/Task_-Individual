@@ -11,17 +11,17 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import jp.co.axiz.web.entity.ImageInfo;
-import jp.co.axiz.web.entity.SessionInfo;
 import jp.co.axiz.web.form.SelectForm;
 import jp.co.axiz.web.service.impl.ImageInfoService;
 
 @Controller
 public class SelectController {
 
-	@Autowired
-	private SessionInfo sessionInfo;
+//	@Autowired
+//	private SessionInfo sessionInfo;
 
 	@Autowired
 	MessageSource message;
@@ -58,10 +58,12 @@ public class SelectController {
 		}
 	}
 
-	@RequestMapping(value = "/more")
+	@RequestMapping(value = "/more" ,method = RequestMethod.POST)
 	public String more(@ModelAttribute("selectForm") SelectForm form,Model model) {
-		ImageInfo image = sessionInfo.getPrevImage();
-		ImageInfo moreImage = ImageInfoService.selectImage(image.getTag_id());
+
+		System.out.println(form.getImageId());
+		List<ImageInfo> moreImage = ImageInfoService.selectImage(form.getImageId());
+
 		model.addAttribute("image",moreImage);
 		return "details";
 	}
