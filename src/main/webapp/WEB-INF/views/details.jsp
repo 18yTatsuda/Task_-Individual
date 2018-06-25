@@ -13,7 +13,7 @@
 <body>
 
 <br>タイトル:${fn:escapeXml(image.imageName)}
-<br><img src="../images/${fn:escapeXml(image.file_name)}">
+<br><img src="../../images/${fn:escapeXml(image.file_name)}" alt="${fn:escapeXml(image.imageName)}" width="75%" height="75%">
 <br>タグ:${fn:escapeXml(image.tag_id)}
 <br>投稿者:${fn:escapeXml(image.user_id)}
 <br>コメント:${fn:escapeXml(image.image_memo)}

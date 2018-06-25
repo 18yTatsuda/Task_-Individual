@@ -24,9 +24,8 @@
 		<tbody>
 		<c:forEach items="${imagelist}" var="image">
 			<tr>
-			<td>${fn:escapeXml(image.imageId)}</td>
 				<td>${fn:escapeXml(image.imageName)}</td>
-				<td><img src ="../images/${fn:escapeXml(image.file_name)}"></td>
+				<td><img src ="../../images/${fn:escapeXml(image.file_name)}" alt="${fn:escapeXml(image.imageName)}" width="193" height="130"></td>
 				<td>${fn:escapeXml(image.user_id)}</td>
 				<td><form:form action="more" method="post" modelAttribute="selectForm">
 					<form:hidden path="imageId" value="${fn:escapeXml(image.imageId)}"/>

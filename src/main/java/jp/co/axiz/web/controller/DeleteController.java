@@ -31,7 +31,7 @@ public class DeleteController {
 		return "delete";
 	}
 
-	@RequestMapping(value = "/delete", method = RequestMethod.GET)
+	@RequestMapping(value = "/deleteConfirm", method = RequestMethod.GET)
 	public String deleteExecute(@Validated @ModelAttribute("deleteForm") DeleteForm form, BindingResult bindingResult,
 			Model model) {
 

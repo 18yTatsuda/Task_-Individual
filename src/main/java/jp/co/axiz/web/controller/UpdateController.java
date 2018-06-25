@@ -34,7 +34,7 @@ public class UpdateController {
 		return "update";
 	}
 
-	@RequestMapping(value="/update" , method = RequestMethod.POST)
+	@RequestMapping(value="/updateInput" , method = RequestMethod.POST)
 	public String updateExecute(@Validated @ModelAttribute("updateForm") UpdateForm form, BindingResult bindingResult,
 			Model model) {
 

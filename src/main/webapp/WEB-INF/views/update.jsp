@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,7 +9,7 @@
 <title>画像情報更新画面</title>
 </head>
 <body>
-<form action="updateInput" method="post">
+<form:form action="updateInput" method="post" modelAttribute="updateForm">
   <fieldset>
     <div>
       <label>タイトル：</label><input type="text" name="image_NewName" value="${fn:escapeXml(image.image_name)}">
@@ -33,6 +34,6 @@
     <input type="submit" name="button" value="決定">
     <input type="submit" name="button" value="編集をやめる" onclick="location.href='details'; return false;">
   </div>
-</form>
+</form:form>
 </body>
 </html>
