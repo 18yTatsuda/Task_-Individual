@@ -14,9 +14,9 @@
 
 <br>タイトル:${fn:escapeXml(image.imageName)}
 <br><img src="../images/${fn:escapeXml(image.file_name)}">
-<br>タグ:${fn:escapeXml(image.tag_name)}
-<br>投稿者:${fn:escapeXml(image.nickname)}
-<br>コメント:${fn:escapeXml(image.imageMemo)}
+<br>タグ:${fn:escapeXml(image.tag_id)}
+<br>投稿者:${fn:escapeXml(image.user_id)}
+<br>コメント:${fn:escapeXml(image.image_memo)}
 
 <a href="update">編集する</a>
 <a href="delete">削除する</a>

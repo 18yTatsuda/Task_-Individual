@@ -57,13 +57,17 @@ public class SelectController {
 			return "selectResult";
 		}
 	}
+	@RequestMapping("/details")
+	public String details(@ModelAttribute("selectForm") SelectForm form, Model model) {
+		return "details";
+	}
 
 	@RequestMapping(value = "/more" ,method = RequestMethod.POST)
 	public String more(@ModelAttribute("selectForm") SelectForm form,Model model) {
 
 		System.out.println(form.getImageId());
-		List<ImageInfo> moreImage = ImageInfoService.selectImage(form.getImageId());
-
+//		List<ImageInfo> moreImage = ImageInfoService.selectImage(form.getImageId());
+		ImageInfo moreImage = ImageInfoService.findById(form.getImageId());
 		model.addAttribute("image",moreImage);
 		return "details";
 	}

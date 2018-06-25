@@ -11,7 +11,7 @@
 <form action="updateInput" method="post">
   <fieldset>
     <div>
-      <label></label><input type="text" name="image_NewName" value="${fn:escapeXml(image.image_name)}">
+      <label>タイトル：</label><input type="text" name="image_NewName" value="${fn:escapeXml(image.image_name)}">
     </div>
     <div>
       <label>画像は差し替え不可</label>
@@ -26,7 +26,7 @@
       <input type="checkbox" name="tags" value="6">動物
     </div>
     <div>
-      <label>メモ</label><input type="text" name="newMemo" value="${fn:escapeXml(image.image_memo)}">
+      <label>メモ：</label><input type="text" name="newMemo" value="${fn:escapeXml(image.image_memo)}">
     </div>
   </fieldset>
   <div>

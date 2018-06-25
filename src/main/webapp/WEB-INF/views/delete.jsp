@@ -12,7 +12,7 @@
 この画像を削除しますか？
   <div>
     <input type="submit" name="button" value="決定">
-    <input type="submit" name="button" value="削除をやめる" onclick="location.href='details'; return false;">
+    <input type="submit" name="button" value="削除をやめる" onclick="location.href='details'">
   </div>
 </body>
 </html>

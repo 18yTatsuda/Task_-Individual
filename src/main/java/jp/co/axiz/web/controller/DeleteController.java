@@ -27,11 +27,11 @@ public class DeleteController {
 	private ImageInfoService imageInfoService;
 
 	@RequestMapping("/dalete")
-	public String delete(Model model) {
+	public String delete(@ModelAttribute("deleteForm") DeleteForm form,Model model) {
 		return "delete";
 	}
 
-	@RequestMapping(value = "/delete", method = RequestMethod.POST)
+	@RequestMapping(value = "/delete", method = RequestMethod.GET)
 	public String deleteExecute(@Validated @ModelAttribute("deleteForm") DeleteForm form, BindingResult bindingResult,
 			Model model) {
 
